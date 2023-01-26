@@ -11,7 +11,7 @@ const promise = new Promise((resolve, reject) => {
   }
 });
 
-// Your solution(s) to exercise001 here!
+// Task 1 : Promise solution
 promise
   .then((response) => {
     console.log(`Yay! Promise resolved with response: ${response}`);
@@ -19,3 +19,32 @@ promise
   .catch((error) => {
     console.log(`Boo. Promise rejected with response: ${error}`);
   });
+
+
+// Task 2 : Async/await solution
+const asyncPromise = async () => {
+  try {
+    const response = await promise;
+    if (response) {
+      console.log(`Yay! Promise resolved with response: ${response}`);
+    }
+  } catch (error) {
+    console.log(`Boo. Promise rejected with response: ${error}`);
+  }
+};
+
+asyncPromise();
+
+// Extra : top level await
+try {
+  const topLevelAwaitResponse = await promise;
+  if (response) {
+    console.log(
+      `Yay! Promise resolved with response: ${topLevelAwaitResponse}`
+    );
+  }
+} catch (error) {
+  console.log(`Boo. Promise rejected with response: ${error}`);
+}
+
+// note : this one sometimes fails with error:- 'ReferenceError: response is not defined'
